@@ -1,32 +1,26 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <b-navbar variant="light">
+      <b-navbar-brand to="/">
+        <b-img v-bind="logoProps"/> Shiba Book Shop
+      </b-navbar-brand>
+    </b-navbar>
+    <router-view />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+export default {
+  data () {
+    return {
+      logoProps: {
+        src: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+        class: 'd-inline-block align-top',
+        alt: 'Shiba Book Shop',
+        width: 30,
+        height: 30
+      }
     }
   }
 }
-</style>
+</script>
