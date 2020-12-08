@@ -1,7 +1,10 @@
 <template>
   <b-card>
-    <b-row class="align-items-stretch">
-      <b-col v-for="book in bookList" :key="book.id" class="mb-3" sm="6" lg="4">
+    <div v-if="loading" class="text-center">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>
+    <b-row v-else class="align-items-stretch">
+      <b-col v-for="book in books" :key="book.id" class="mb-3" sm="6" lg="4">
         <b-card
           class="h-100"
           :img-src="book.cover"
@@ -16,23 +19,22 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'BookList',
-  data () {
-    return {
-      bookList: []
-    }
+  computed: {
+    ...mapGetters({
+      loading: 'books/loading',
+      books: 'books/books'
+    })
   },
   created () {
-    this.fetchBookList()
+    this.fetchBooks()
   },
   methods: {
-    fetchBookList () {
-      axios.get('https://api.jsonbin.io/b/5f3154b06f8e4e3faf2f99de').then(({ data }) => {
-        this.bookList = data.books
-      })
+    fetchBooks () {
+      this.$store.dispatch('books/fetchBooks')
     }
   }
 }

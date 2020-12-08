@@ -2,7 +2,7 @@
   <b-container fluid class="py-3">
     <b-row>
       <b-col md="8">
-        <BookList/>
+        <book-list/>
       </b-col>
       <b-col md="4"></b-col>
     </b-row>
