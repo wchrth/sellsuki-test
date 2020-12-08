@@ -12,7 +12,11 @@
           img-top
           :title="book.title"
           :sub-title="`${book.price} Baht`"
-        />
+        >
+          <template #footer>
+            <b-button block variant="primary" @click="addToCart(book)">Add to cart</b-button>
+          </template>
+        </b-card>
       </b-col>
     </b-row>
   </b-card>
@@ -35,6 +39,9 @@ export default {
   methods: {
     fetchBooks () {
       this.$store.dispatch('books/fetchBooks')
+    },
+    addToCart (book) {
+      this.$store.dispatch('cart/addToCart', book)
     }
   }
 }
