@@ -46,7 +46,7 @@ const mutations = {
   }
 }
 
-const getters = {
+export const getters = {
   items (state) {
     return state.items
   },
