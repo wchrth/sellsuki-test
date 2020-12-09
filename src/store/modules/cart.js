@@ -17,6 +17,9 @@ const actions = {
   },
   deleteFromCart (context, bookId) {
     context.commit('deleteFromCart', bookId)
+  },
+  checkout (context) {
+    context.commit('checkout')
   }
 }
 
@@ -37,6 +40,9 @@ const mutations = {
     if (index > -1) {
       state.items.splice(index, 1)
     }
+  },
+  checkout (state) {
+    state.items = []
   }
 }
 

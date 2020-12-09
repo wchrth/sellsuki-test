@@ -13,7 +13,7 @@
 
 <script>
 import BookList from '@/components/BookList.vue'
-import Cart from '../components/Cart.vue'
+import Cart from '@/components/Cart.vue'
 
 export default {
   name: 'Home',
